@@ -1,0 +1,13 @@
+{
+  "name": "log-processor-web",
+  "version": "1.0.0",
+  "description": "Web app for file tree management and regex-based log processing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
