@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File + Regex Tool</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel left">
+        <h2>Файлы (./root)</h2>
+        <div class="toolbar">
+          <input id="targetDirInput" value="/" placeholder="Текущая директория" />
+          <input id="uploadInput" type="file" multiple />
+          <button id="uploadBtn">Загрузить</button>
+          <button id="newFolderBtn">Создать папку</button>
+        </div>
+        <div id="tree"></div>
+      </section>
+
+      <section class="panel right">
+        <h2>Обработка строк</h2>
+        <label>Входная директория</label>
+        <input id="inputDir" value="/logs" />
+
+        <label>Выходной файл</label>
+        <input id="outputFile" value="/result.txt" />
+
+        <label>Фильтр (regex)</label>
+        <div class="input-row">
+          <input id="includeRegex" placeholder="например: ERROR" list="regexHistory" />
+          <select id="includeMode">
+            <option value="positive">позитивный</option>
+            <option value="negative">негативный</option>
+          </select>
+        </div>
+        <small id="includeRegexPreview"></small>
+
+        <datalist id="regexHistory"></datalist>
+
+        <h3>Извлечение групп</h3>
+        <div id="mappingRows"></div>
+        <button id="addMappingBtn">+ Добавить regex</button>
+
+        <label>Шаблон выходной строки</label>
+        <input id="template" value="iptables -t filter -A INPUT -s {ip} -j DROP" />
+        <small id="templatePreview"></small>
+
+        <button id="runBtn" class="run">Запустить обработку</button>
+        <pre id="result"></pre>
+      </section>
+    </main>
+
+    <template id="mappingRowTemplate">
+      <div class="mapping-row">
+        <input class="map-key" placeholder="ключ (например ip)" />
+        <input class="map-regex" placeholder="regex с 1 группой" list="regexHistory" />
+        <button class="remove-row">✕</button>
+      </div>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
