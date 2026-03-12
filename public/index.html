@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log Processor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.16/themes/default/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <section class="panel left">
+      <h2>Файлы (./root)</h2>
+      <div class="toolbar">
+        <input type="file" id="uploadInput" />
+        <button id="uploadBtn">Загрузить в выбранную папку</button>
+      </div>
+      <div id="tree"></div>
+      <p class="hint">ПКМ по узлу: создать папку, переименовать, удалить, скачать. Перетаскивание работает для перемещения.</p>
+    </section>
+
+    <section class="panel right">
+      <h2>Конструктор обработки</h2>
+      <form id="processorForm">
+        <label>Входная директория (пример: /logs)
+          <input type="text" id="inputDir" value="/logs" required />
+        </label>
+
+        <label>Выходной файл (пример: /result.txt)
+          <input type="text" id="outputFile" value="/result.txt" required />
+        </label>
+
+        <label>Фильтр (regex)
+          <textarea id="filterRegex"></textarea>
+        </label>
+
+        <label>Режим фильтра
+          <select id="filterMode">
+            <option value="positive">Позитивный (оставить совпадения)</option>
+            <option value="negative">Негативный (исключить совпадения)</option>
+          </select>
+        </label>
+
+        <div class="patterns-header">
+          <h3>Поля извлечения (1 группа на regex)</h3>
+          <button type="button" id="addPatternBtn">+ Добавить</button>
+        </div>
+        <div id="patterns"></div>
+
+        <label>Шаблон выходной строки
+          <textarea id="outputTemplate">iptables -t filter -A INPUT -s {ip} -j DROP</textarea>
+        </label>
+
+        <button type="submit" class="primary">Запустить обработку</button>
+      </form>
+      <pre id="status"></pre>
+    </section>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.16/jstree.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
