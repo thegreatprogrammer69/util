@@ -1,0 +1,110 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #111319;
+  color: #e6e8ef;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.pane {
+  padding: 16px;
+  box-sizing: border-box;
+  border-right: 1px solid #2b2f3a;
+}
+
+.pane-right {
+  border-right: 0;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+input, select, button, textarea {
+  background: #1b1f2a;
+  color: #e6e8ef;
+  border: 1px solid #313848;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+button { cursor: pointer; }
+button.primary {
+  margin-top: 12px;
+  background: #2264ff;
+  border-color: #2264ff;
+}
+
+label, h3 {
+  display: block;
+  margin: 10px 0 6px;
+}
+
+#sourceDir, #outputFile {
+  width: 100%;
+}
+
+#rules {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rule-card {
+  border: 1px solid #313848;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.rule-card .row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.rule-card input {
+  flex: 1;
+}
+
+.rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CodeMirror {
+  height: auto;
+  border: 1px solid #313848;
+  border-radius: 6px;
+  background: #1b1f2a;
+  color: #f8f8f2;
+}
+
+#status {
+  background: #0e1117;
+  border: 1px solid #313848;
+  padding: 8px;
+  border-radius: 8px;
+  min-height: 72px;
+}
+
+.hint {
+  color: #8a93a8;
+  font-size: 12px;
+}
+
+.token-placeholder {
+  color: #50fa7b;
+}

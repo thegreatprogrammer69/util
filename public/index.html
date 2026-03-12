@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log Regex Workbench</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.17/themes/default/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <section class="pane pane-left">
+      <h2>Файлы (./root)</h2>
+      <div class="toolbar">
+        <button id="refreshTree">Обновить</button>
+        <button id="createFolder">Новая папка</button>
+        <button id="renameItem">Переименовать</button>
+        <button id="deleteItem">Удалить</button>
+        <button id="downloadItem">Скачать</button>
+      </div>
+      <div class="toolbar">
+        <input id="uploadInput" type="file" multiple />
+        <button id="uploadBtn">Загрузить в выбранную директорию</button>
+      </div>
+      <div id="tree"></div>
+      <p class="hint">Перетаскивайте элементы дерева для перемещения.</p>
+    </section>
+
+    <section class="pane pane-right">
+      <h2>Обработка логов</h2>
+      <label>Директория-источник</label>
+      <input id="sourceDir" value="/logs" />
+
+      <label>Выходной файл</label>
+      <input id="outputFile" value="/result.txt" />
+
+      <label>Фильтр</label>
+      <div class="row">
+        <select id="filterMode">
+          <option value="include">Include (оставлять совпавшие)</option>
+          <option value="exclude">Exclude (отбрасывать совпавшие)</option>
+        </select>
+      </div>
+      <textarea id="filterRegex" class="regex-editor"></textarea>
+
+      <div class="rules-header">
+        <h3>Поля извлечения</h3>
+        <button id="addRule">+ Добавить regex</button>
+      </div>
+      <div id="rules"></div>
+
+      <label>Шаблон выходной строки</label>
+      <textarea id="template">iptables -t filter -A INPUT -s {ip} -j DROP # {site}</textarea>
+
+      <button id="processBtn" class="primary">Запустить обработку</button>
+      <pre id="status"></pre>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.17/jstree.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/simple.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
