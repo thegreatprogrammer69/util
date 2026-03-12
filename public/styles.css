@@ -1,0 +1,22 @@
+* { box-sizing: border-box; font-family: Inter, Arial, sans-serif; }
+body { margin: 0; background: #111827; color: #e5e7eb; }
+.layout { display: grid; grid-template-columns: 1.2fr 1fr; min-height: 100vh; }
+.panel { padding: 16px; border-right: 1px solid #1f2937; overflow: auto; }
+.panel.right { border-right: none; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+input, select, button { background: #1f2937; color: #e5e7eb; border: 1px solid #374151; border-radius: 6px; padding: 8px; }
+button { cursor: pointer; }
+button.run { margin-top: 16px; width: 100%; background: #2563eb; }
+#tree { background: #0f172a; border: 1px solid #374151; border-radius: 8px; padding: 8px; }
+.tree-node { margin-left: 16px; }
+.tree-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.tree-row .name { flex: 1; }
+.tree-row .dir { color: #93c5fd; }
+.tree-row .file { color: #a7f3d0; }
+.tree-row button { padding: 2px 8px; font-size: 12px; }
+label { display: block; margin-top: 12px; margin-bottom: 4px; }
+.mapping-row { display: grid; grid-template-columns: 1fr 2fr auto; gap: 8px; margin-bottom: 8px; }
+#result { margin-top: 12px; background: #0f172a; padding: 10px; border-radius: 6px; min-height: 80px; }
+small { display: block; color: #93c5fd; margin-top: 6px; }
+.syntax-highlight { color: #fca5a5; }
+.placeholder-highlight { color: #86efac; font-weight: bold; }
