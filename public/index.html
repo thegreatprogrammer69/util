@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log Regex Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.16/themes/default/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <section class="panel files-panel">
+      <div class="panel-header">
+        <h2>Файловое дерево (./root)</h2>
+        <button id="refreshTreeBtn">Обновить</button>
+      </div>
+      <div class="toolbar">
+        <input id="uploadTarget" placeholder="Директория для загрузки, напр. /logs" value="/" />
+        <input type="file" id="uploadFile" />
+        <button id="uploadBtn">Загрузить</button>
+      </div>
+      <div id="fileTree"></div>
+      <p class="hint">ПКМ по узлу: создать папку, переименовать, удалить, скачать. Drag & Drop для перемещения.</p>
+    </section>
+
+    <section class="panel processing-panel">
+      <h2>Обработка логов</h2>
+
+      <label>Входная директория (относительно ./root)</label>
+      <input id="inputDir" value="/logs" />
+
+      <label>Выходной файл (относительно ./root)</label>
+      <input id="outputFile" value="/result.txt" />
+
+      <label>Фильтр (regex)</label>
+      <textarea id="filterRegex"></textarea>
+      <div class="row">
+        <label><input type="radio" name="filterMode" value="positive" checked /> Позитивный</label>
+        <label><input type="radio" name="filterMode" value="negative" /> Негативный</label>
+      </div>
+
+      <div class="extractors-head">
+        <h3>Извлечения (каждый regex с 1 группой)</h3>
+        <button id="addExtractorBtn" type="button">+ Добавить</button>
+      </div>
+      <div id="extractors"></div>
+
+      <label>Шаблон выходной строки</label>
+      <textarea id="templateLine">iptables -t filter -A INPUT -s {ip} -j DROP</textarea>
+
+      <button id="processBtn" class="primary">Запустить обработку</button>
+      <div id="resultBox"></div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.16/jstree.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
